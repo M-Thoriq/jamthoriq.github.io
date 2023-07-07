@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="j.png" type="image/x-icon">
 
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
         @media (max-width: 44em){
             .container .mt-3{
                 margin-top: 7em !important;
@@ -25,6 +28,21 @@
                 margin-top: 10em !important;
             }
         }
+
+        #time{
+            /* background-color: hsl(var(--black)); */
+            /* color: green; */
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            border-radius: 3.5px;
+        }
+        #date{
+            /* background-color: hsl(var(--black)); */
+            /* color: green; */
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            border-radius: 3.5px;
+        }
     </style>
 
 </head>
@@ -33,7 +51,8 @@
     <div class="container mt-3">
         <div class="row center">
             <div class="card th-dark sz-m">
-                <p id="time"></p>
+                <div class="row center"><p id="time"></p></div>
+                <div class="row center"><p id="date"></p></div>
             </div>
         </div>
         <div class="row center mt-1" style="
@@ -47,11 +66,17 @@
 
     <script>
         var timeDisplay = document.getElementById("time");
+        var dateDisplay = document.getElementById("date");
+
         function refreshTime() 
         {
-        var dateString = new Date().toLocaleString();
-        var formattedString = dateString.replace(", ", " - ");
-        timeDisplay.innerHTML = formattedString;
+            var dateString = new Date().toLocaleString();
+            var formattedString = dateString.replace(", ", " - ");
+            var noDate = formattedString.split("-");
+            var formattedDate1 = noDate[0].replace("/", " - ");
+            var formattedDate = formattedDate1.replace("/", " - ");
+            timeDisplay.innerHTML = noDate[1];
+            dateDisplay.innerHTML = formattedDate;
         }
   
         setInterval(refreshTime, 1000);
