@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What time?</title>
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        @media (max-width: 44em){
+            .container .mt-3{
+                margin-top: 7em !important;
+            }
+            .card{
+                padding: 5em 2em !important; 
+            }
+        }
+        @media (min-width: 45em){
+            .card{
+                padding: 10em 5em;
+            }
+            .container .mt-3{
+                margin-top: 10em !important;
+            }
+        }
+    </style>
+
+</head>
+<body class="bg-dark"
+    style="max-height: 100vh;"> 
+    <div class="container mt-3">
+        <div class="row center">
+            <div class="card th-dark sz-m">
+                <p id="time"></p>
+            </div>
+        </div>
+        <div class="row center mt-1" style="
+            color: rgba(128, 128, 128, 0.316);
+            font-style: italic;
+            font-size: 0.9em;
+        ">
+            by Muhammad Thoriq Al Asyjari
+        </div>
+    </div>
+
+    <script>
+        var timeDisplay = document.getElementById("time");
+        function refreshTime() 
+        {
+        var dateString = new Date().toLocaleString();
+        var formattedString = dateString.replace(", ", " - ");
+        timeDisplay.innerHTML = formattedString;
+        }
+  
+        setInterval(refreshTime, 1000);
+    </script>
+
+</body>
+
+</html>
